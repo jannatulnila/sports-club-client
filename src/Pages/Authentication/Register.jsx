@@ -10,22 +10,26 @@ import useAxios from '../../Hooks/useAxios';
 import axios from 'axios';
 
 const Register = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const { createUser, updateUserProfile } = useAuth();
     const [profilePic, setProfilePic] = useState();
     const axiosInstance = useAxios();
     const navigate = useNavigate()
-    const location =useLocation()
+    const location = useLocation()
     const from = location?.state?.from || '/'
 
     const onSubmit = data => {
 
         createUser(data.email, data.password)
             .then(async (result) => {
-                console.log(result.user);
+              console.log(result.data)
+
+                
                 // update user info in database
                 const userInfo = {
                     email: data.email,
+                    name: data.name,
+                    image: profilePic,
                     role: 'user',  //default role
                     created_at: new Date().toISOString(),
                     last_log_in: new Date().toISOString()
@@ -88,7 +92,7 @@ const Register = () => {
                             {errors.name && <p className="text-red-500 text-sm">Name is required</p>}
                         </div>
 
-                         {/* image field */}
+                        {/* image field */}
                         <label className="label text-secondary">Your Name</label>
                         <input type="file"
                             onChange={handleImageUpload}
@@ -123,7 +127,7 @@ const Register = () => {
                                 className="input bg-gray-100 text-secondary"
                                 placeholder="Enter password"
                             />
-                
+
                             {errors.password?.type === 'required' && (
                                 <p className="text-red-500 text-sm">Password is required</p>
                             )}

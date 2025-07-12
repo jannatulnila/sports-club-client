@@ -2,16 +2,16 @@ import { Link, NavLink, Outlet } from 'react-router';
 // import useUserRole from '../hooks/useUserRole'; // your custom role hook
 import { FaHome, FaUsers, FaSignOutAlt, FaPlus, FaCalendarAlt } from 'react-icons/fa';
 import useAuth from '../Hooks/useAuth';
-// import useUserRole from '../Hooks/useUserRole';
 import { FiUser, FiSpeaker, FiTag, FiClipboard, FiHome, FiUsers, FiUserCheck, FiCheckCircle, FiPlusSquare } from 'react-icons/fi';
 import { GiSoccerField } from "react-icons/gi";
+import useUserRole from '../Hooks/useUserRole';
 
 
 
 const DashboardLayout = () => {
     const { user, logOut } = useAuth();
-    // const { role, roleLoading } = useUserRole();  // 'admin', 'member', or 'user'
-    // console.log(role)
+    const { role, roleLoading } = useUserRole();  // 'admin', 'member', or 'user'
+    console.log(role)
 
     return (
         <div className="flex min-h-screen">
@@ -24,22 +24,34 @@ const DashboardLayout = () => {
                         <Link to="/" className="flex items-center gap-2"><FaHome /> Home</Link>
                     </li>
                     <li>
-                        <Link to="/dashboard/profile" className="flex items-center gap-2"><FaUsers /> My Profile</Link>
+                        <Link to="/dashboard/all-courts" className="flex items-center gap-2"><GiSoccerField /> All Courts</Link>
                     </li>
 
-                    {/* {role === 'user' && ( */}
-                        {/* <> */}
+
+                    {role === 'user' && (
+                        <>
                             <li>
-                                <Link to="/dashboard/all-courts" className="flex items-center gap-2"><GiSoccerField  /> All Courts</Link>
+                                <Link to="/dashboard/profile" className="flex items-center gap-2"><FaUsers /> My Profile</Link>
                             </li>
-                            <li>
-                                <Link to="/dashboard/pending-bookings" className="flex items-center gap-2"><FaCalendarAlt /> Pending Bookings</Link>
-                            </li>
+
                             <li>
                                 <Link to="/dashboard/announcements" className="flex items-center gap-2">📣 Announcements</Link>
                             </li>
 
-                             {/* member */}
+
+                        </>
+                    )}
+
+                    {role === 'member' && (
+                        <>
+                            <li>
+                                <NavLink to="/dashboard/my-member-profile">
+                                    <FiUser className="inline mr-2" /> Member Profile
+                                </NavLink>
+                            </li>
+                            <li>
+                                <Link to="/dashboard/pending-bookings" className="flex items-center gap-2"><FaCalendarAlt /> Pending Bookings</Link>
+                            </li>
                             <li>
                                 <Link to="/dashboard/approved-bookings">✅ Approved Bookings</Link>
                             </li>
@@ -52,8 +64,11 @@ const DashboardLayout = () => {
                             <li>
                                 <Link to="/dashboard/announcements">📣 Announcements</Link>
                             </li>
+                        </>
+                    )}
 
-                            {/* admin */}
+                    {!roleLoading && role === 'admin' && (
+                        <>
                             <li>
                                 <NavLink to="profile">
                                     <FiUser className="inline mr-2" /> Admin Profile
@@ -67,6 +82,11 @@ const DashboardLayout = () => {
                             <li>
                                 <NavLink to="/dashboard/manage-coupons">
                                     <FiTag className="inline mr-2" /> Manage Coupons
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/dashboard/booking-approval">
+                                    <FiCheckCircle className="inline mr-2" /> Manage Bookings Approval
                                 </NavLink>
                             </li>
                             <li>
@@ -89,11 +109,7 @@ const DashboardLayout = () => {
                                     <FiUserCheck className="inline mr-2" /> Manage Members
                                 </NavLink>
                             </li>
-                            <li>
-                                <NavLink to="/dashboard/booking-approval">
-                                    <FiCheckCircle className="inline mr-2" /> Manage Bookings Approval
-                                </NavLink>
-                            </li>
+
                             <li>
                                 <NavLink to="/dashboard/make-admin">
                                     <FiCheckCircle className="inline mr-2" />Make Admin
@@ -104,23 +120,8 @@ const DashboardLayout = () => {
                                     <FiPlusSquare className="inline mr-2" /> Add Court
                                 </NavLink>
                             </li>
-                            
-                        {/* </>
-                    )} */}
-
-                    {/* {role === 'member' && (
-                        <>
-                       <li>bh</li>
-
-
                         </>
                     )}
-
-                    {role === 'admin' && (
-                        <>
-                        <li>hgjykgk</li>
-                         </> 
-                    )} */}
 
                     <li>
                         <button onClick={logOut} className="flex items-center gap-2 text-red-500"><FaSignOutAlt /> Logout</button>
