@@ -95,6 +95,11 @@ const DashboardLayout = () => {
                                 </NavLink>
                             </li>
                             <li>
+                                <NavLink to="/dashboard/make-admin">
+                                    <FiCheckCircle className="inline mr-2" />Make Admin
+                                </NavLink>
+                            </li>
+                            <li>
                                 <NavLink to="/dashboard/add-court">
                                     <FiPlusSquare className="inline mr-2" /> Add Court
                                 </NavLink>
