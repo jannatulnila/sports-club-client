@@ -19,8 +19,11 @@ import Forbidden from "../Pages/Forbidden/Forbidden";
 import AdminRoute from "../Routes/AdminRoute";
 import Courts from "../Pages/Courts/Courts";
 import ManageBookingApproval from "../Pages/ManageBookingApprovel/ManageBookingApprovel";
-import ManageMembers from "../Pages/ManageMembers/ManageMembers";
 import MyMemberProfile from "../Pages/Dashboard/MyProfile/MymemberProfile";
+import ApprovedBookings from "../Pages/Dashboard/ApprovedBookings/ApprovedBookings";
+import Payment from "../Pages/Dashboard/Payment/Payment";
+import ManageCupons from "../Pages/Dashboard/ManageCoupons/ManageCoupons";
+import ManageMembers from "../Pages/Dashboard/ManageMembers/ManageMembers";
 
 
 export const router = createBrowserRouter([
@@ -67,16 +70,24 @@ export const router = createBrowserRouter([
         element:<AdminRoute><ManageBookingApproval></ManageBookingApproval></AdminRoute>
       },
       {
-        path: '/dashboard/manage-members',
-        element:<AdminRoute><ManageMembers></ManageMembers></AdminRoute>
-      },
-      {
         path: '/dashboard/profile',
         element: <MyProfile></MyProfile>
       },
       {
         path: '/dashboard/make-admin',
         element:<AdminRoute><MakeAdmin></MakeAdmin></AdminRoute>
+      },
+      {
+        path: '/dashboard/manage-coupons',
+        element:<AdminRoute><ManageCupons></ManageCupons></AdminRoute>
+      },
+      {
+        path: '/dashboard/manage-courts',
+        element:<AdminRoute><ManageCourts></ManageCourts></AdminRoute>
+      },
+      {
+        path: '/dashboard/manage-members',
+        element:<AdminRoute><ManageMembers></ManageMembers></AdminRoute>
       },
       {
         path:"/dashboard/my-member-profile",
@@ -89,6 +100,14 @@ export const router = createBrowserRouter([
       {
         path: '/dashboard/pending-bookings',
         element: <PendingBookings></PendingBookings>
+      },
+      {
+        path: '/dashboard/approved-bookings',
+        element: <ApprovedBookings></ApprovedBookings>
+      },
+      {
+        path:'/dashboard/payment/:id',
+        element:<Payment></Payment>
       }
     ]
   }
