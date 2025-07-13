@@ -2,7 +2,7 @@ import React from 'react';
 import Banner from '../Components/Banner';
 import AboutClub from '../Components/AboutClub';
 import LocationMap from '../Components/LocationMap';
-import Promotions from '../Components/Promotions';
+import Promotions from '../Components/PromoCoupons';
 
 const Home = () => {
     return (
