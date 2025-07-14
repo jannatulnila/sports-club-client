@@ -53,11 +53,11 @@ const ManageCourts = () => {
     };
 
     return (
-        <div>
-            <h2 className="text-2xl font-bold text-secondary mb-4">Manage Courts</h2>
+        <div className='p-4'>
+            <h2 className="text-2xl font-bold text-secondary text-center mb-4">Manage Courts</h2>
 
             {/* Add/Edit Court Form */}
-            <form onSubmit={handleSubmit} className="space-y-4 max-w-md bg-white p-4 shadow rounded">
+            <form onSubmit={handleSubmit} className="space-y-4 max-w-5xl bg-white p-4 shadow rounded">
                 <input
                     className="input input-bordered w-full"
                     placeholder="Court Type"

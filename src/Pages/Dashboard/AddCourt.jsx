@@ -78,7 +78,7 @@ const AddCourt = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-white shadow rounded-lg">
+    <div className="max-w-5xl mx-auto p-6 bg-white shadow rounded-lg">
       <h2 className="text-2xl font-bold mb-4 text-center text-secondary">Add New Court</h2>
 
       <form onSubmit={handleSubmit} className="space-y-4">

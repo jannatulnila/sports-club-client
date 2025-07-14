@@ -62,7 +62,7 @@ const AboutClub = () => (
             <h3 className="text-xl font-semibold">Our History</h3>
           </div>
           <p className="text-gray-700 text-center">
-            Established in 2010, PrimeFit began with just 2 courts and a small team of passionate coaches.
+            Established in 2010, PrimeFit began with just 5 courts and a small team of passionate coaches.
             Over the years, we've grown into one of the city’s most respected sports clubs, serving 1,000+ members.
           </p>
         </div>

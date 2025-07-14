@@ -1,77 +1,105 @@
-import { useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
-import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import { useQuery, useMutation } from "@tanstack/react-query";
+import Swal from "sweetalert2";
+
+import { useState } from "react";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
+
+const ManageBookingApproval = () => {
+    const axiosSecure = useAxiosSecure();
+    const [actionLoading, setActionLoading] = useState(false);
 
 
-const ManageConfirmedBookings = () => {
-  const axiosSecure = useAxiosSecure();
-  const [search, setSearch] = useState('');
+    const { data: bookings = [], refetch, isLoading } = useQuery({
+        queryKey: ['pending-bookings'],
+        queryFn: async () => {
+            const res = await axiosSecure.get("/bookings?status=pending");
+            return res.data;
+        },
+    });
 
-  const { data: bookings = [], refetch, isLoading } = useQuery({
-    queryKey: ['confirmed-bookings', search],
-    queryFn: async () => {
-      const res = await axiosSecure.get(`/bookings/confirmed?search=${search}`);
-      return res.data;
-    },
-  });
+    const { mutateAsync: updateStatus } = useMutation({
+        mutationFn: async ({ id, status }) =>
+            await axiosSecure.patch(`/bookings/${id}`, { status }),
+        onSuccess: () => {
+            refetch();
+        },
+    });
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    refetch();
-  };
+    const handleAction = async (id, action) => {
+        const confirm = await Swal.fire({
+            title: `${action === 'approved' ? 'Approve' : 'Reject'} booking?`,
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'Cancel',
+        });
 
-  return (
-    <div className="max-w-6xl mx-auto p-4">
-      <h2 className="text-2xl font-bold mb-4">Manage Confirmed Bookings</h2>
+        if (!confirm.isConfirmed) return;
 
-      <form onSubmit={handleSearch} className="mb-4 flex gap-2">
-        <input
-          type="text"
-          placeholder="Search by court type..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="input input-bordered w-full max-w-xs"
-        />
-        <button type="submit" className="btn btn-primary">Search</button>
-      </form>
+        try {
+            await updateStatus({ id, status: action });
+            Swal.fire("Success", `Booking ${action}`, "success");
+        } catch (error) {
+            Swal.fire("Error", "Failed to update booking", "error");
+        }
+    };
 
-      {isLoading ? (
-        <p>Loading bookings...</p>
-      ) : (
-        <div className="overflow-x-auto bg-white shadow rounded">
-          <table className="table">
-            <thead className="bg-base-200">
-              <tr>
-                <th>#</th>
-                <th>User</th>
-                <th>Email</th>
-                <th>Court</th>
-                <th>Slots</th>
-                <th>Price</th>
-                <th>Date</th>
-              </tr>
-            </thead>
-            <tbody>
-              {bookings.map((booking, idx) => (
-                <tr key={booking._id}>
-                  <td>{idx + 1}</td>
-                  <td>{booking.name || 'N/A'}</td>
-                  <td>{booking.email}</td>
-                  <td>{booking.courtType}</td>
-                  <td>{Array.isArray(booking.slots) ? booking.slots.join(', ') : booking.slots}</td>
-                  <td>${booking.price}</td>
-                  <td>{new Date(booking.date).toLocaleDateString()}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          {bookings.length === 0 && (
-            <p className="text-center my-4 text-gray-500">No confirmed bookings found.</p>
-          )}
+    return (
+        <div className="p-6 bg-black">
+            <h2 className="text-2xl font-bold text-center mb-4">Manage Booking Approvals</h2>
+
+            {isLoading ? (
+                <p>Loading...</p>
+            ) : bookings.length === 0 ? (
+                <p className="text-gray-500">No pending bookings found.</p>
+            ) : (
+                <div className="overflow-x-auto">
+                    <table className="table table-zebra w-full">
+                        <thead>
+                            <tr>
+                                <th>Email</th>
+                                <th>Court</th>
+                                <th>Slots</th>
+                                <th>Date</th>
+                                <th>Price</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {bookings.map(booking => (
+                                <tr key={booking._id}>
+                                    <td>{booking.email}</td>
+                                    <td>{booking.courtName || "N/A"}</td>
+                                    <td>{booking.selectedSlots?.join(", ")}</td>
+                                    <td>{new Date(booking.date).toLocaleDateString()}</td>
+                                    <td>${booking.totalPrice}</td>
+                                    <td>
+                                        <span className="badge badge-warning">{booking.status}</span>
+                                    </td>
+                                    <td className="space-x-2">
+                                        <button
+                                            className="btn btn-xs btn-success"
+                                            onClick={() => handleAction(booking._id, 'approved')}
+                                            disabled={actionLoading}
+                                        >
+                                           {actionLoading ? "..." : "Accept"}
+                                        </button>
+                                        <button
+                                            className="btn btn-xs btn-error"
+                                            onClick={() => handleAction(booking._id, 'rejected')}
+                                        >
+                                            Reject
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            )}
         </div>
-      )}
-    </div>
-  );
+    );
 };
 
-export default ManageConfirmedBookings;
+export default ManageBookingApproval;

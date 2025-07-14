@@ -5,12 +5,12 @@ import {
     FiUser, FiSpeaker, FiTag, FiClipboard, FiHome,
     FiUsers, FiUserCheck, FiCheckCircle, FiPlusSquare
 } from 'react-icons/fi';
-import { GiSoccerField } from "react-icons/gi";
 import useAuth from '../Hooks/useAuth';
 import useUserRole from '../Hooks/useUserRole';
+import PrimeFit from '../Components/PrimeFit';
 
 const DashboardLayout = () => {
-    const { user, logOut } = useAuth();
+    const { logOut } = useAuth();
     const { role, roleLoading } = useUserRole();
     const [isOpen, setIsOpen] = useState(false);
 
@@ -18,13 +18,13 @@ const DashboardLayout = () => {
     const closeSidebar = () => setIsOpen(false);
 
     return (
-        <div className="flex flex-col lg:flex-row min-h-screen">
+        <div className="flex flex-col lg:flex-row bg-white min-h-screen">
             {/* Top Navbar for Mobile */}
-            <div className="bg-base-200 p-4 flex items-center justify-between lg:hidden shadow-md">
+            <div className="bg-white p-4 flex items-center justify-between lg:hidden ">
                 <button onClick={toggleSidebar}>
                     <FaBars className="text-xl" />
                 </button>
-                <h2 className="text-xl font-bold text-primary">Dashboard</h2>
+                <PrimeFit></PrimeFit>
             </div>
 
             {/* Sidebar */}
@@ -37,21 +37,13 @@ const DashboardLayout = () => {
                     <button onClick={toggleSidebar} className="text-xl">✕</button>
                 </div>
 
-                <h2 className="text-2xl font-bold mb-6 text-center text-primary hidden lg:block">Dashboard</h2>
+                <PrimeFit></PrimeFit>
 
                 <ul className="space-y-4 text-sm font-semibold">
-                    <li>
-                        <Link to="/" className="flex items-center gap-2" onClick={closeSidebar}><FaHome /> Home</Link>
-                    </li>
-
-
                     {role === 'user' && (
                         <>
                             <li>
                                 <Link to="/dashboard/profile" className="flex items-center gap-2" onClick={closeSidebar}><FaUsers /> My Profile</Link>
-                            </li>
-                            <li>
-                                <Link to="/dashboard/all-courts" className="flex items-center gap-2" onClick={closeSidebar}><GiSoccerField /> All Courts</Link>
                             </li>
                             <li>
                                 <Link to="/dashboard/announcements" className="flex items-center gap-2" onClick={closeSidebar}>📣 Announcements</Link>
@@ -62,9 +54,6 @@ const DashboardLayout = () => {
                     {role === 'member' && (
                         <>
                             <li><NavLink to="/dashboard/my-member-profile" onClick={closeSidebar}><FiUser className="inline mr-2" /> Member Profile</NavLink></li>
-                            <li>
-                                <Link to="/dashboard/all-courts" className="flex items-center gap-2" onClick={closeSidebar}><GiSoccerField /> All Courts</Link>
-                            </li>
                             <li><Link to="/dashboard/pending-bookings" className="flex items-center gap-2" onClick={closeSidebar}><FaCalendarAlt /> Pending Bookings</Link></li>
                             <li><Link to="/dashboard/approved-bookings" onClick={closeSidebar}>✅ Approved Bookings</Link></li>
                             <li><Link to="/dashboard/confirmed-bookings" onClick={closeSidebar}>📌 Confirmed Bookings</Link></li>

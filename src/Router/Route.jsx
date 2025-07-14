@@ -11,7 +11,6 @@ import DashboardLayout from "../Layouts/DashboardLayout";
 import ManageCourts from "../Pages/Dashboard/ManageCourts";
 import AddCourt from "../Pages/Dashboard/AddCourt";
 import MyProfile from "../Pages/Dashboard/MyProfile/MyProfile";
-import AllCourts from "../Pages/Dashboard/AllCourts/AllCourts";
 import PendingBookings from "../Pages/Dashboard/PendingBookings/PendingBookings";
 import MakeAdmin from "../Pages/Dashboard/MakeAdmin/MakeAdmin";
 import Forbidden from "../Pages/Forbidden/Forbidden";
@@ -33,6 +32,7 @@ import ManageAnnouncements from "../Pages/Dashboard/ManageAnnouncements/ManageAn
 import Announcements from "../Pages/Dashboard/Announcements/Announcements";
 import ManageBookings from "../Pages/Dashboard/ManageBookings/ManageBookings";
 import ConfirmedBookings from "../Pages/Dashboard/ConfirmedBookings/ConfirmedBookings";
+import DashboardHome from "../Pages/Dashboard/DashboadHome/DashboardHome";
 
 
 export const router = createBrowserRouter([
@@ -59,13 +59,21 @@ export const router = createBrowserRouter([
       {
         path: '/register',
         Component: Register
-      }
+      },
+      {
+        path: '/courts',
+        element: <Courts></Courts>
+      },
     ]
   },
   {
     path: '/dashboard',
     element: <DashboardLayout></DashboardLayout>,
     children: [
+      {
+        index:true,
+        Component:DashboardHome
+      },
       {
         path: '/dashboard/admin-profile',
         element: <AdminRoute><AdminProfile></AdminProfile></AdminRoute>
@@ -122,10 +130,7 @@ export const router = createBrowserRouter([
         path:"/dashboard/my-member-profile",
         element:<MyMemberProfile></MyMemberProfile>
       },
-      {
-        path: '/dashboard/all-courts',
-        element: <AllCourts></AllCourts>
-      },
+      
       {
         path: '/dashboard/pending-bookings',
         element: <PendingBookings></PendingBookings>

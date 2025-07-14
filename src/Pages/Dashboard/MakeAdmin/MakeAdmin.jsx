@@ -154,8 +154,8 @@ const MakeAdmin = () => {
     };
 
     return (
-        <div className="p-6">
-            <h2 className="text-2xl font-semibold mb-4">Make Admin</h2>
+        <div className="p-6 ">
+            <h2 className="text-2xl font-semibold text-secondary text-center mb-4">Make Admin</h2>
 
             <div className="flex gap-2 mb-6 items-center">
                 <FaSearch />

@@ -41,7 +41,7 @@ const ManageAnnouncements = () => {
 
   return (
     <div className="p-6 max-w-4xl bg-black mx-auto space-y-4">
-      <h2 className="text-2xl text-center font-bold">Manage Announcements</h2>
+      <h2 className="text-2xl text-center text-secondary font-bold">Manage Announcements</h2>
 
       {announcements.map((a) => (
         <div key={a._id} className="bg-base-200 p-4 rounded">

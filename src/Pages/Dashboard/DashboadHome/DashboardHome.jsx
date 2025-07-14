@@ -1,26 +1,26 @@
 import React from 'react';
-import useUserRole from '../../../hooks/useUserRole';
-import Loading from '../../../Components/Loading';
-import UserDashboard from './UserDashboard';
-import RiderDashboard from './RiderDashboard';
-import AdminDashboard from './AdminDashboard';
 import Forbidden from '../../Forbidden/Forbidden';
+import useUserRole from '../../../Hooks/useUserRole';
+import AdminDashboard from './AdminDashboard';
+import UserDashboard from './UserDashboard';
+import MemberDashboard from './MemberDashboard';
+
 
 const DashboardHome = () => {
     const {role, roleLoading} =useUserRole();
 
     if(roleLoading){
-        return <Loading></Loading>
+        return <span className="loading loading-spinner text-success"></span>
     }
 
     if(role === 'user'){
        return <UserDashboard></UserDashboard>
     }
     else if(role === 'member'){
-       return <RiderDashboard></RiderDashboard>
+       return <MemberDashboard></MemberDashboard>
     }
     else if(role === 'admin'){
-       return <AdminDashboard></AdminDashboard>
+       return <AdminDashboard />
     }
     else{
         return <Forbidden></Forbidden>

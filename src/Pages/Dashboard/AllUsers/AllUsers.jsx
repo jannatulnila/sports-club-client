@@ -25,18 +25,21 @@ const AllUsers = () => {
   });
 
   return (
-    <div className="p-6 bg-black">
-      <h2 className="text-2xl font-bold mb-4">All Users</h2>
+    <div className="p-6">
+      <h2 className="text-2xl text-secondary text-center font-bold mb-4">All Users</h2>
 
-      <input
+      <div className="flex justify-center mb-4">
+        <input
         type="text"
         placeholder="Search by name or email..."
         className="input input-bordered w-full max-w-sm mb-4"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
+      </div>
 
-      {isLoading ? (
+     <div className="bg-black">
+         {isLoading ? (
         <p className="text-gray-300">Loading...</p>
       ) : (
         <div className="overflow-x-auto">
@@ -74,6 +77,7 @@ const AllUsers = () => {
           </table>
         </div>
       )}
+     </div>
     </div>
   );
 };

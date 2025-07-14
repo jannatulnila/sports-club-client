@@ -20,9 +20,9 @@ const PaymentHistory = () => {
     }
 
     return (
-        <div className="overflow-x-auto bg-black p-4 rounded shadow max-w-4xl mx-auto">
-            <h2 className="text-xl font-semibold mb-4 text-center">My Payment History</h2>
-            <table className="table w-full">
+        <div className="overflow-x-auto  p-4 rounded shadow max-w-4xl mx-auto">
+            <h2 className="text-xl font-semibold text-secondary mb-4 text-center">My Payment History</h2>
+            <table className="table bg-black w-full">
                 <thead>
                     <tr className="bg-base-200 text-sm">
                         <th>#</th>

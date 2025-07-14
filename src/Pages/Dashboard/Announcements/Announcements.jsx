@@ -21,7 +21,7 @@ const Announcements = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-4 space-y-4">
-      <h2 className="text-2xl font-bold text-center text-primary mb-6">📣 Club Announcements</h2>
+      <h2 className="text-2xl font-bold text-center text-secondary mb-6"> Club Announcements</h2>
 
       {announcements.map((a) => (
         <div key={a._id} className="bg-base-200 p-4 rounded-lg shadow hover:shadow-md transition-all">
