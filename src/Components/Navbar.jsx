@@ -1,6 +1,6 @@
 import { AiOutlineMenu } from 'react-icons/ai';
 import { useState } from 'react';
-import { Link } from 'react-router'; 
+import { Link, NavLink } from 'react-router';
 import avatarImg from '../assets/placeholder.jpg';
 import useAuth from '../Hooks/useAuth';
 import PrimeFit from './PrimeFit';
@@ -10,18 +10,36 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="sticky top-0 z-50  bg-white text-primary shadow-md">
+    <div className="sticky top-0 z-50 bg-white text-primary shadow-md">
       <div className="py-4 border-b-[1px] px-4 md:px-8 lg:px-16">
         <div className="flex flex-row items-center justify-between gap-3 md:gap-0">
           {/* Logo */}
-          <Link to="/" className="btn btn-ghost hover:bg-white text-xl">
+          <button className="btn btn-ghost hover:bg-white border-none text-xl">
             <PrimeFit />
-          </Link>
+          </button>
 
           {/* Desktop Nav Links */}
           <div className="hidden md:flex gap-6 font-semibold text-primary">
-            <Link to="/">Home</Link>
-            <Link to="/courts">Courts</Link>
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                `transition px-2 py-1 rounded ${
+                  isActive ? 'bg-gray-200' : 'hover:bg-neutral-100'
+                }`
+              }
+            >
+              Home
+            </NavLink>
+            <NavLink
+              to="/courts"
+              className={({ isActive }) =>
+                `transition px-2 py-1 rounded ${
+                  isActive ? 'bg-gray-200' : 'hover:bg-neutral-100'
+                }`
+              }
+            >
+              Courts
+            </NavLink>
           </div>
 
           {/* Dropdown Menu (Mobile + Profile) */}
@@ -49,35 +67,53 @@ const Navbar = () => {
             {isOpen && (
               <div className="absolute rounded-xl shadow-md w-[40vw] md:w-[14rem] bg-white overflow-hidden right-0 top-12 text-sm z-50">
                 <div className="flex flex-col cursor-pointer">
-                  {/* Mobile links only */}
-                  <Link
+                  {/* Mobile Links Only */}
+                  <NavLink
                     to="/"
-                    className="block md:hidden px-4 py-3 hover:bg-neutral-100 text-primary transition font-semibold"
+                    onClick={() => setIsOpen(false)}
+                    className={({ isActive }) =>
+                      `block md:hidden px-4 py-3 transition font-semibold ${
+                        isActive ? 'bg-gray-200 text-primary' : 'hover:bg-neutral-100 text-primary'
+                      }`
+                    }
                   >
                     Home
-                  </Link>
-                  <Link
+                  </NavLink>
+                  <NavLink
                     to="/courts"
-                    className="block md:hidden px-4 py-3 hover:bg-neutral-100 text-primary transition font-semibold"
+                    onClick={() => setIsOpen(false)}
+                    className={({ isActive }) =>
+                      `block md:hidden px-4 py-3 transition font-semibold ${
+                        isActive ? 'bg-gray-200 text-primary' : 'hover:bg-neutral-100 text-primary'
+                      }`
+                    }
                   >
                     Courts
-                  </Link>
+                  </NavLink>
 
                   {user ? (
                     <>
-                      <span className="px-4 py-2 text-gray-500 text-sm">
-                        {user?.displayName}
-                      </span>
-                      {/* Dashboard link */}
-                      <Link
+                      <span className="px-4 py-2 text-gray-500 text-sm">{user?.displayName}</span>
+
+                      <NavLink
                         to="/dashboard"
-                        className="px-4 py-3 hover:bg-neutral-100 text-primary transition font-semibold"
+                        onClick={() => setIsOpen(false)}
+                        className={({ isActive }) =>
+                          `px-4 py-3 transition font-semibold ${
+                            isActive
+                              ? 'bg-gray-200 text-primary'
+                              : 'hover:bg-neutral-100 text-primary'
+                          }`
+                        }
                       >
                         Dashboard
-                      </Link>
-                      {/* Logout */}
+                      </NavLink>
+
                       <div
-                        onClick={logOut}
+                        onClick={() => {
+                          logOut();
+                          setIsOpen(false);
+                        }}
                         className="px-4 py-3 hover:bg-neutral-100 transition font-semibold text-red-500 cursor-pointer"
                       >
                         Logout
@@ -85,18 +121,32 @@ const Navbar = () => {
                     </>
                   ) : (
                     <>
-                      <Link
+                      <NavLink
                         to="/login"
-                        className="px-4 py-3 hover:bg-neutral-100 transition font-semibold text-primary"
+                        onClick={() => setIsOpen(false)}
+                        className={({ isActive }) =>
+                          `px-4 py-3 transition font-semibold ${
+                            isActive
+                              ? 'bg-gray-200 text-primary'
+                              : 'hover:bg-neutral-100 text-primary'
+                          }`
+                        }
                       >
                         Login
-                      </Link>
-                      <Link
+                      </NavLink>
+                      <NavLink
                         to="/register"
-                        className="px-4 py-3 hover:bg-neutral-100 transition font-semibold text-primary"
+                        onClick={() => setIsOpen(false)}
+                        className={({ isActive }) =>
+                          `px-4 py-3 transition font-semibold ${
+                            isActive
+                              ? 'bg-gray-200 text-primary'
+                              : 'hover:bg-neutral-100 text-primary'
+                          }`
+                        }
                       >
                         Register
-                      </Link>
+                      </NavLink>
                     </>
                   )}
                 </div>

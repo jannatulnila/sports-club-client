@@ -1,12 +1,30 @@
-# React + Vite
+Sports Club Management System ( PrimeFit Sports Club )
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack, single-club Sports Club Management System built with MERN stack to manage court bookings, memberships, payments, and admin operations.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌐 Live Site
 
-## Expanding the ESLint configuration
+🔗 Visit Live Site- https://primefit-sports-club-99b528.netlify.app 
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+---
+
+# Admin Credentials
+Email:nila1@gmail.com
+Paawoard:123456Ab#
+
+# Features
+1. Role-Based Access Control — 3 roles: User, Member, Admin with separate dashboards.
+2.  Firebase Authentication — Secure login/signup with email & Google.
+3.  Court Management — Add, edit, delete courts with image, slots, and pricing.
+4.  Court Booking System — Users can request bookings with multiple time slots.
+5.  Booking Approval Workflow — Admins approve/reject booking requests.
+6.  Secure Stripe Payments — Members can pay for approved bookings with coupon discount support.
+7.  Dashboard for All Roles — Responsive dashboards for users, members, and admins.
+8.  Announcements System — Admins can post club-wide announcements.
+9.  Coupon Management — Admin can add, update, delete discount coupons.
+10. Statistics Overview — Admin dashboard shows total users, members, courts.
+
+

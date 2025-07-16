@@ -44,10 +44,7 @@ const ApprovedBookings = () => {
         });
     };
 
-    //   const handlePayment = (id) => {
-    //     // Redirect to /dashboard/payment and pass booking info
-    //     navigate(`/dashboard/payment/${id}`);
-    //   };
+
 
 
     const handlePayment = (id) => {
@@ -82,44 +79,31 @@ const ApprovedBookings = () => {
                                     <td>{booking.slots?.join(", ")}</td>
                                     <td>{booking.date}</td>
                                     <td>${booking.price}</td>
-                                     <td>
-        {booking.payment_status === 'paid' ? (
-          <span className="badge badge-success">Paid</span>
-        ) : (
-          <span className="badge badge-warning">Unpaid</span>
-        )}
-      </td>
-      <td className="space-x-2">
-        {booking.payment_status !== 'paid' && (
-          <button
-            className="btn btn-xs btn-success"
-            onClick={() => handlePayment(booking._id)}
-          >
-            Pay Now
-          </button>
-        )}
-        <button
-          className="btn btn-xs btn-error"
-          onClick={() => handleCancel(booking._id)}
-        >
-          Cancel
-        </button>
-      </td>
-
-                                    {/* <td className="space-x-2">
-                                        <button
-                                            className="btn btn-xs btn-success"
-                                            onClick={() => handlePayment(booking._id)}
-                                        >
-                                            Pay Now
-                                        </button>
+                                    <td>
+                                        {booking.payment_status === 'paid' ? (
+                                            <span className="badge badge-success">Paid</span>
+                                        ) : (
+                                            <span className="badge badge-warning">Unpaid</span>
+                                        )}
+                                    </td>
+                                    <td className="space-x-2">
+                                        {booking.payment_status !== 'paid' && (
+                                            <button
+                                                className="btn btn-xs btn-success"
+                                                onClick={() => handlePayment(booking._id)}
+                                            >
+                                                Pay Now
+                                            </button>
+                                        )}
                                         <button
                                             className="btn btn-xs btn-error"
                                             onClick={() => handleCancel(booking._id)}
                                         >
                                             Cancel
                                         </button>
-                                    </td> */}
+                                    </td>
+
+
                                 </tr>
                             ))}
                         </tbody>

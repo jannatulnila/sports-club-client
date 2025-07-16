@@ -36,7 +36,7 @@ const Register = () => {
                 }
 
                 const userResult = await axiosInstance.post('/users', userInfo);
-                console.log(userResult.data)
+                
 
                 // update profile in firebase
                 const userProfile = {
@@ -45,8 +45,6 @@ const Register = () => {
                 }
                 updateUserProfile(userProfile)
                     .then(() => {
-                        console.log('profile name pic updated')
-                        console.log(data)
                         navigate(from)
                     })
                     .catch(error => {
@@ -61,7 +59,6 @@ const Register = () => {
 
     const handleImageUpload = async (e) => {
         const image = e.target.files[0]
-        console.log(image);
 
 
         const formData = new FormData();

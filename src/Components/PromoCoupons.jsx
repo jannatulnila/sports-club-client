@@ -17,7 +17,7 @@ const PromoCoupons = () => {
   if (isLoading) return <div className="text-center">Loading coupons...</div>;
 
   return (
-    <section className="py-10 bg-gradient-to-r from-rose-100 via-pink-200 to-rose-100">
+    <section className="py-10 ">
       <div className="max-w-6xl mx-auto px-4">
         <h2 className="text-3xl font-bold text-center text-primary mb-8">🎉 Exclusive Promo Codes</h2>
 

@@ -128,7 +128,7 @@ export const router = createBrowserRouter([
       },
       {
         path:"/dashboard/my-member-profile",
-        element:<MyMemberProfile></MyMemberProfile>
+        element:<MemberRoute><MyMemberProfile></MyMemberProfile></MemberRoute>
       },
       
       {
@@ -137,19 +137,19 @@ export const router = createBrowserRouter([
       },
       {
         path: '/dashboard/approved-bookings',
-        element: <ApprovedBookings></ApprovedBookings>
+        element: <MemberRoute><ApprovedBookings></ApprovedBookings></MemberRoute>
       },
       {
         path:'/dashboard/payment/:id',
-        element:<Payment></Payment>
+        element:<MemberRoute><Payment></Payment></MemberRoute>
       },
       {
         path:'/dashboard/payment-history',
-        element:<PaymentHistory></PaymentHistory>
+        element:<MemberRoute><PaymentHistory></PaymentHistory></MemberRoute>
       },
       {
         path:'/dashboard/confirmed-bookings',
-        element:<ConfirmedBookings></ConfirmedBookings>
+        element:<MemberRoute><ConfirmedBookings></ConfirmedBookings></MemberRoute>
       },
       {
         path:'/dashboard/Announcements',

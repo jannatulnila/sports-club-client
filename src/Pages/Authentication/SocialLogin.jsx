@@ -11,13 +11,12 @@ const SocialLogin = () => {
     const navigate = useNavigate();
     const from = location?.state?.from || '/';
     const axiosInstance = useAxios();
-    console.log(user)
+    
 
 
     const handleGoogleSignIn = () => {
         signInWithGoogle()
             .then(async(result) => {
-                console.log(result.user);
                 navigate(from)
                
                  const userInfo ={

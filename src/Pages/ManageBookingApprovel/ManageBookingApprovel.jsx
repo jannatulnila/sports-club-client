@@ -45,10 +45,11 @@ const ManageBookingApproval = () => {
     };
 
     return (
-        <div className="p-6 bg-black">
-            <h2 className="text-2xl font-bold text-center mb-4">Manage Booking Approvals</h2>
+        <div className="p-6 ">
+            <h2 className="text-2xl font-bold text-center text-secondary mb-4">Manage Booking Approvals</h2>
 
-            {isLoading ? (
+            <div className="bg-black">
+                {isLoading ? (
                 <p>Loading...</p>
             ) : bookings.length === 0 ? (
                 <p className="text-gray-500">No pending bookings found.</p>
@@ -73,7 +74,7 @@ const ManageBookingApproval = () => {
                                     <td>{booking.courtName || "N/A"}</td>
                                     <td>{booking.selectedSlots?.join(", ")}</td>
                                     <td>{new Date(booking.date).toLocaleDateString()}</td>
-                                    <td>${booking.totalPrice}</td>
+                                    <td>${booking.price}</td>
                                     <td>
                                         <span className="badge badge-warning">{booking.status}</span>
                                     </td>
@@ -98,6 +99,7 @@ const ManageBookingApproval = () => {
                     </table>
                 </div>
             )}
+            </div>
         </div>
     );
 };
