@@ -33,6 +33,7 @@ import Announcements from "../Pages/Dashboard/Announcements/Announcements";
 import ManageBookings from "../Pages/Dashboard/ManageBookings/ManageBookings";
 import ConfirmedBookings from "../Pages/Dashboard/ConfirmedBookings/ConfirmedBookings";
 import DashboardHome from "../Pages/Dashboard/DashboadHome/DashboardHome";
+import AboutClub from "../Components/AboutClub";
 
 
 export const router = createBrowserRouter([
@@ -45,12 +46,16 @@ export const router = createBrowserRouter([
         Component: Home,
       },
       {
-      path:'/courts',
-      Component:Courts
+        path: '/courts',
+        Component: Courts
       },
       {
-      path:'/forbidden',
-      Component:Forbidden
+        path: '/about',
+        Component: AboutClub
+      },
+      {
+        path: '/forbidden',
+        Component: Forbidden
       },
       {
         path: '/login',
@@ -64,6 +69,18 @@ export const router = createBrowserRouter([
         path: '/courts',
         element: <Courts></Courts>
       },
+      {
+        path: "/adminProfile",
+        element: <PrivateRoute><AdminProfile /></PrivateRoute>,
+      },
+      {
+        path: "/memberProfile",
+        element: <PrivateRoute><MyMemberProfile /></PrivateRoute>,
+      },
+      {
+        path: "/userProfile",
+        element: <PrivateRoute><MyProfile /></PrivateRoute>,
+      }
     ]
   },
   {
@@ -71,8 +88,8 @@ export const router = createBrowserRouter([
     element: <DashboardLayout></DashboardLayout>,
     children: [
       {
-        index:true,
-        Component:DashboardHome
+        index: true,
+        Component: DashboardHome
       },
       {
         path: '/dashboard/admin-profile',
@@ -88,15 +105,15 @@ export const router = createBrowserRouter([
       },
       {
         path: '/dashboard/add-court',
-        element:<AdminRoute><AddCourt></AddCourt></AdminRoute>
+        element: <AdminRoute><AddCourt></AddCourt></AdminRoute>
       },
       {
         path: '/dashboard/Manage-Announcements',
-        element:<AdminRoute><ManageAnnouncements></ManageAnnouncements></AdminRoute>
+        element: <AdminRoute><ManageAnnouncements></ManageAnnouncements></AdminRoute>
       },
       {
         path: '/dashboard/booking-approval',
-        element:<AdminRoute><ManageBookingApproval></ManageBookingApproval></AdminRoute>
+        element: <AdminRoute><ManageBookingApproval></ManageBookingApproval></AdminRoute>
       },
       {
         path: '/dashboard/profile',
@@ -104,33 +121,33 @@ export const router = createBrowserRouter([
       },
       {
         path: '/dashboard/make-admin',
-        element:<AdminRoute><MakeAdmin></MakeAdmin></AdminRoute>
+        element: <AdminRoute><MakeAdmin></MakeAdmin></AdminRoute>
       },
       {
         path: '/dashboard/manage-bookings',
-        element:<AdminRoute><ManageBookings></ManageBookings></AdminRoute>
+        element: <AdminRoute><ManageBookings></ManageBookings></AdminRoute>
       },
       {
         path: '/dashboard/manage-coupons',
-        element:<AdminRoute><ManageCupons></ManageCupons></AdminRoute>
+        element: <AdminRoute><ManageCupons></ManageCupons></AdminRoute>
       },
       {
         path: '/dashboard/manage-courts',
-        element:<AdminRoute><ManageCourts></ManageCourts></AdminRoute>
+        element: <AdminRoute><ManageCourts></ManageCourts></AdminRoute>
       },
       {
         path: '/dashboard/manage-members',
-        element:<AdminRoute><ManageMembers></ManageMembers></AdminRoute>
+        element: <AdminRoute><ManageMembers></ManageMembers></AdminRoute>
       },
       {
         path: '/dashboard/all-users',
-        element:<AdminRoute><AllUsers></AllUsers></AdminRoute>
+        element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
       },
       {
-        path:"/dashboard/my-member-profile",
-        element:<MemberRoute><MyMemberProfile></MyMemberProfile></MemberRoute>
+        path: "/dashboard/my-member-profile",
+        element: <MemberRoute><MyMemberProfile></MyMemberProfile></MemberRoute>
       },
-      
+
       {
         path: '/dashboard/pending-bookings',
         element: <PendingBookings></PendingBookings>
@@ -140,20 +157,20 @@ export const router = createBrowserRouter([
         element: <MemberRoute><ApprovedBookings></ApprovedBookings></MemberRoute>
       },
       {
-        path:'/dashboard/payment/:id',
-        element:<MemberRoute><Payment></Payment></MemberRoute>
+        path: '/dashboard/payment/:id',
+        element: <MemberRoute><Payment></Payment></MemberRoute>
       },
       {
-        path:'/dashboard/payment-history',
-        element:<MemberRoute><PaymentHistory></PaymentHistory></MemberRoute>
+        path: '/dashboard/payment-history',
+        element: <MemberRoute><PaymentHistory></PaymentHistory></MemberRoute>
       },
       {
-        path:'/dashboard/confirmed-bookings',
-        element:<MemberRoute><ConfirmedBookings></ConfirmedBookings></MemberRoute>
+        path: '/dashboard/confirmed-bookings',
+        element: <MemberRoute><ConfirmedBookings></ConfirmedBookings></MemberRoute>
       },
       {
-        path:'/dashboard/Announcements',
-        element:<Announcements></Announcements>
+        path: '/dashboard/Announcements',
+        element: <Announcements></Announcements>
       }
     ]
   }

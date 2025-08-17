@@ -22,7 +22,7 @@ const MyProfile = () => {
     }
 
     return (
-        <div className="max-w-xl mx-auto bg-white shadow-md rounded-xl p-6 mt-6">
+        <div className="my-5 max-w-xl mx-auto bg-white shadow-md rounded-xl p-6 mt-6">
             <h2 className="text-2xl font-bold mb-6 text-center text-secondary">My Profile</h2>
             <div className="flex flex-col items-center space-y-4">
                 <img

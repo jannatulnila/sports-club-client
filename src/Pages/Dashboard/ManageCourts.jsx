@@ -90,8 +90,8 @@ const ManageCourts = () => {
                 {courts.map(court => (
                     <div key={court._id} className="card shadow-md p-4 bg-gray-300">
                         <img src={court.image} alt={court.type} className="w-full h-40 object-cover rounded mb-2" />
-                        <h3 className="font-bold">{court.type}</h3>
-                        <p>Price: ${court.pricePerSession}</p>
+                        <h3 className="font-bold text-black">{court.type}</h3>
+                        <p className='text-black'>Price: ${court.pricePerSession}</p>
                         <div className="mt-2 flex gap-2">
                             <button
                                 className="btn btn-sm btn-accent"

@@ -8,8 +8,8 @@
 @plugin "daisyui/theme" {
   name: "dark";
   default: true;
-  --color-primary: #CAEB66;
-  --color-secondary: #0097b2;
+  --color-primary: #465C88;
+  --color-secondary: #FFCC00;
 }
 
 .font-roboto {

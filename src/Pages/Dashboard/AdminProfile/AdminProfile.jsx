@@ -1,7 +1,179 @@
+// import { useQuery } from "@tanstack/react-query";
+// import useAuth from "../../../Hooks/useAuth";
+// import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+
+
+// const AdminProfile = () => {
+//     const { user } = useAuth();
+//     const axiosSecure = useAxiosSecure();
+
+//     const { data: stats = {}, isLoading } = useQuery({
+//         queryKey: ["admin-profile-stats"],
+//         queryFn: async () => {
+//             const [courtsRes, usersRes, membersRes] = await Promise.all([
+//                 axiosSecure.get("/admin/stats/courts"),
+//                 axiosSecure.get("/admin/stats/users"),
+//                 axiosSecure.get("/admin/stats/members"),
+//             ]);
+
+//             return {
+//                 totalCourts: courtsRes.data.totalCourts,
+//                 totalUsers: usersRes.data.totalUsers,
+//                 totalMembers: membersRes.data.totalMembers,
+//             };
+//         },
+//     });
+
+//     return (
+//         <div className="p-6">
+//             <h2 className="text-2xl text-secondary text-center font-bold mb-4">Admin Profile</h2>
+
+//             <div className="bg-gray-200 p-4 rounded-2xl">
+//                 <div className="flex items-center justify-center gap-4 mb-6">
+//                     <img
+//                         src={user?.photoURL}
+//                         alt="Admin"
+//                         className="w-20 h-20 rounded-full border-4 border-primary"
+//                     />
+//                     <div>
+//                         <h3 className="text-xl text-secondary font-semibold">{user?.displayName}</h3>
+//                         <p className="text-sm text-secondary">{user?.email}</p>
+//                     </div>
+//                 </div>
+
+//                 {isLoading ? (
+//                     <p>Loading stats...</p>
+//                 ) : (
+//                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+//                         <div className="bg-base-200 rounded-xl p-4 shadow">
+//                             <h4 className="text-lg font-semibold">Total Courts</h4>
+//                             <p className="text-2xl">{stats.totalCourts}</p>
+//                         </div>
+//                         <div className="bg-base-200 rounded-xl p-4 shadow">
+//                             <h4 className="text-lg font-semibold">Total Users</h4>
+//                             <p className="text-2xl">{stats.totalUsers}</p>
+//                         </div>
+//                         <div className="bg-base-200 rounded-xl p-4 shadow">
+//                             <h4 className="text-lg font-semibold">Total Members</h4>
+//                             <p className="text-2xl">{stats.totalMembers}</p>
+//                         </div>
+//                     </div>
+//                 )}
+//             </div>
+//         </div>
+//     );
+// };
+
+// export default AdminProfile;
+
+
+// import { useQuery } from "@tanstack/react-query";
+// import useAuth from "../../../Hooks/useAuth";
+// import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+
+// const AdminProfile = () => {
+//     const { user } = useAuth();
+//     const axiosSecure = useAxiosSecure();
+
+//     const { data: stats = {}, isLoading } = useQuery({
+//         queryKey: ["admin-profile-stats"],
+//         queryFn: async () => {
+//             const [courtsRes, usersRes, membersRes] = await Promise.all([
+//                 axiosSecure.get("/admin/stats/courts"),
+//                 axiosSecure.get("/admin/stats/users"),
+//                 axiosSecure.get("/admin/stats/members"),
+//             ]);
+
+//             return {
+//                 totalCourts: courtsRes.data.totalCourts,
+//                 totalUsers: usersRes.data.totalUsers,
+//                 totalMembers: membersRes.data.totalMembers,
+//             };
+//         },
+//     });
+
+//     return (
+//         <div className="p-6 max-w-4xl mx-auto">
+//             <h2 className="text-3xl font-bold text-center mb-8 text-secondary" >
+//                 Admin Profile
+//             </h2>
+
+//             {/* Profile Section */}
+//             <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
+//                 <div className="flex items-center gap-6">
+//                     <img
+//                         src={user?.photoURL}
+//                         alt="Admin"
+//                         className="w-24 h-24 rounded-full border-4 border-primary"
+
+//                     />
+//                     <div>
+//                         <h3 className="text-2xl font-bold text-secondary mb-2" >
+//                             {user?.displayName}
+//                         </h3>
+//                         <p className="text-gray-600 text-lg">{user?.email}</p>
+//                         <span 
+//                             className="inline-block px-3 py-1 rounded-full text-white text-sm font-medium bg-primary mt-2"
+
+//                         >
+//                             Admin
+//                         </span>
+//                     </div>
+//                 </div>
+//             </div>
+
+//             {/* Stats Section */}
+//             <div className="bg-white rounded-lg shadow-lg p-6">
+//                 <h3 className="text-xl font-bold mb-6 text-secondary">
+//                     System Statistics
+//                 </h3>
+
+//                 {isLoading ? (
+//                     <div className="text-center py-8">
+//                         <div 
+//                             className="inline-block w-8 h-8 border-4 border-t-transparent rounded-full border-primary  animate-spin"
+
+//                         ></div>
+//                         <p className="mt-2 text-gray-600">Loading stats...</p>
+//                     </div>
+//                 ) : (
+//                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+//                         <div className="text-center p-4 rounded-lg" style={{ backgroundColor: '#FF7A30' }}>
+//                             <h4 className="text-white text-lg font-semibold mb-2">Total Courts</h4>
+//                             <p className="text-white text-3xl font-bold">{stats.totalCourts || 0}</p>
+//                         </div>
+
+//                         <div className="text-center p-4 rounded-lg" style={{ backgroundColor: '#465C88' }}>
+//                             <h4 className="text-white text-lg font-semibold mb-2">Total Users</h4>
+//                             <p className="text-white text-3xl font-bold">{stats.totalUsers || 0}</p>
+//                         </div>
+
+//                         <div className="text-center p-4 rounded-lg" style={{ backgroundColor: '#FF7A30' }}>
+//                             <h4 className="text-white text-lg font-semibold mb-2">Total Members</h4>
+//                             <p className="text-white text-3xl font-bold">{stats.totalMembers || 0}</p>
+//                         </div>
+//                     </div>
+//                 )}
+//             </div>
+//         </div>
+//     );
+// };
+
+// export default AdminProfile;
+
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-
+import {
+    FaPlus,
+    FaTicketAlt,
+    FaBullhorn,
+    FaCog,
+    FaTableTennis,
+    FaUsers,
+    FaUserFriends
+} from "react-icons/fa";
+import { Link, NavLink } from "react-router";
 
 const AdminProfile = () => {
     const { user } = useAuth();
@@ -25,43 +197,109 @@ const AdminProfile = () => {
     });
 
     return (
-        <div className="p-6">
-            <h2 className="text-2xl text-secondary text-center font-bold mb-4">Admin Profile</h2>
-
-            <div className="bg-gray-200 p-4 rounded-2xl">
-                <div className="flex items-center justify-center gap-4 mb-6">
+        <div className="p-6 space-y-8">
+            {/* Profile Header */}
+            <div className="bg-blue-50 rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-6 shadow">
+                <div className="relative">
                     <img
                         src={user?.photoURL}
                         alt="Admin"
-                        className="w-20 h-20 rounded-full border-4 border-primary"
+                        className="w-24 h-24 rounded-full border-4 border-white shadow-md"
                     />
-                    <div>
-                        <h3 className="text-xl text-secondary font-semibold">{user?.displayName}</h3>
-                        <p className="text-sm text-secondary">{user?.email}</p>
+                    <span className="absolute bottom-2 right-2 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></span>
+                </div>
+                <div className="flex-1 text-center sm:text-left">
+                    <h3 className="text-xl font-bold text-gray-800">{user?.displayName}</h3>
+                    <p className="text-sm text-gray-500">{user?.email}</p>
+                    <span
+                        className="inline-block px-3 py-1 rounded-full text-white text-sm font-medium bg-primary mt-2">
+                        Admin
+                    </span>
+                    <div className="mt-4 flex justify-center sm:justify-start gap-3">
+                        {/* <button className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+              Edit Profile
+            </button> */}
                     </div>
                 </div>
+            </div>
 
-                {isLoading ? (
-                    <p>Loading stats...</p>
-                ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div className="bg-base-200 rounded-xl p-4 shadow">
-                            <h4 className="text-lg font-semibold">Total Courts</h4>
-                            <p className="text-2xl">{stats.totalCourts}</p>
-                        </div>
-                        <div className="bg-base-200 rounded-xl p-4 shadow">
-                            <h4 className="text-lg font-semibold">Total Users</h4>
-                            <p className="text-2xl">{stats.totalUsers}</p>
-                        </div>
-                        <div className="bg-base-200 rounded-xl p-4 shadow">
-                            <h4 className="text-lg font-semibold">Total Members</h4>
-                            <p className="text-2xl">{stats.totalMembers}</p>
-                        </div>
+            {/* Dashboard Stats */}
+            {isLoading ? (
+                <p className="text-center text-gray-500">Loading stats...</p>
+            ) : (
+                <div>
+                    <h4 className="font-semibold text-gray-700 mb-4">Dashboard Statistics</h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                        <StatCard
+                            icon={<FaTableTennis />}
+                            label="Total Courts"
+                            value={stats.totalCourts}
+                            color="bg-blue-100 text-blue-600"
+                        />
+                        <StatCard
+                            icon={<FaUsers />}
+                            label="Total Users"
+                            value={stats.totalUsers}
+                            color="bg-green-100 text-green-600"
+                        />
+                        <StatCard
+                            icon={<FaUserFriends />}
+                            label="Total Members"
+                            value={stats.totalMembers}
+                            color="bg-purple-100 text-purple-600"
+                        />
                     </div>
-                )}
+                </div>
+            )}
+
+            {/* Quick Actions */}
+            <div>
+                <h4 className="font-semibold text-gray-700 mb-4">Quick Actions</h4>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-secondary">
+                    <Link to="/dashboard/add-court" >
+                        <ActionButton icon={<FaPlus />} label="Add Court"  />
+                    </Link>
+                    <Link to="/dashboard/manage-coupons" className="">
+                        <ActionButton icon={<FaTicketAlt />} label="New Coupon" />
+                     </Link>
+                    <Link to="/dashboard/make-announcement" className="">
+                        <ActionButton icon={<FaBullhorn />} label="Announcement" />
+                    </Link>
+                    <Link to="/dashboard/manage-bookings" className="">
+                    <ActionButton icon={<FaCog />} label="Settings" />
+                    </Link>
+                    
+                    
+                </div>
             </div>
         </div>
     );
 };
+
+// Stats Card Component
+const StatCard = ({ icon, label, value, color }) => (
+    <div className="bg-white rounded-xl shadow p-5 flex items-center gap-4">
+        <div
+            className={`w-12 h-12 flex items-center justify-center rounded-lg ${color}`}
+        >
+            <span className="text-2xl">{icon}</span>
+        </div>
+        <div>
+            <p className="text-xs text-gray-500">{label}</p>
+            <p className="text-2xl font-bold text-gray-800">{value}</p>
+            <span className="text-green-500 text-xs">↑ Active</span>
+        </div>
+    </div>
+);
+
+// Quick Action Button
+const ActionButton = ({ icon, label }) => (
+  <div className="w-full">
+    <button className="flex flex-col items-center justify-center p-5 bg-white rounded-xl shadow hover:shadow-lg transition w-full h-full">
+      <div className="text-2xl mb-2 text-primary">{icon}</div>
+      <p className="text-sm font-medium text-gray-700 text-center">{label}</p>
+    </button>
+  </div>
+);
 
 export default AdminProfile;
