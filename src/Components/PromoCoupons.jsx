@@ -33,8 +33,8 @@ const PromoCoupons = () => {
   );
 
   return (
-    <section className="py-10 bg-gray-200 min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-20">
+    <section className=" bg-gray-200 min-h-screen">
+      <div className="max-w-7xl mx-auto ">
         <div className="text-center mb-2">
           <h2 className="text-xl md:text-3xl font-bold text-[var(--color-secondary)] mb-2">
              Exclusive Promo Codes
@@ -44,7 +44,7 @@ const PromoCoupons = () => {
           </p>
         </div>
 
-        <div className="grid gap-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div className="grid gap-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 py-6 md:py-10 px-4 md:px-8 lg:px-20">
           {activeCoupons.map((coupon) => (
             <div
               key={coupon._id}

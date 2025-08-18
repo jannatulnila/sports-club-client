@@ -29,7 +29,7 @@ const Navbar = () => {
 
   return (
     <div className="sticky top-0 z-50 bg-primary text-white dark:bg-gray-900 dark:text-white shadow-md w-full">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-3 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-20 py-3 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
           <PrimeFit />

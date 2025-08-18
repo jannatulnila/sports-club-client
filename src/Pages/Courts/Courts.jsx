@@ -47,9 +47,9 @@ const Courts = () => {
       </h2>
 
       {/* Sorting */}
-      <div className="flex justify-center mb-4">
+      <div className="flex justify-center mb-6">
         <select
-          className="select select-bordered w-48 "
+          className="select select-bordered w-48"
           value={sortOrder}
           onChange={(e) => setSortOrder(e.target.value)}
         >
@@ -60,12 +60,13 @@ const Courts = () => {
       </div>
 
       {/* Card View */}
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 md:px-6 lg:px-8 py-6 md:py-10">
         {currentCourts.map((court) => (
           <div
             key={court._id}
-            className="card bg-base-100 shadow-lg h-full flex flex-col"
+            className="bg-base-100 shadow-md rounded-xl overflow-hidden flex flex-col hover:shadow-xl transition-shadow duration-300"
           >
+            {/* Image */}
             <figure>
               <img
                 src={court.image}
@@ -73,34 +74,40 @@ const Courts = () => {
                 className="h-48 w-full object-cover"
               />
             </figure>
-            <div className="card-body flex flex-col justify-between h-64">
-              <div>
-                <h2 className="card-title">{court.name}</h2>
-                <p>
-                  <strong>Type:</strong> {court.type}
-                </p>
-                <p>
-                  <strong>Price:</strong> ${court.pricePerSession} / session
-                </p>
-                <label className="font-medium">Available Slots:</label>
-                <select className="select select-bordered w-full">
-                  {court.slots.map((slot, index) => (
-                    <option key={index}>{slot}</option>
-                  ))}
-                </select>
+
+            {/* Card Body */}
+            <div className="flex flex-col flex-1 p-4">
+              <h2 className="text-lg font-semibold mb-2">{court.name}</h2>
+              <p className="text-sm text-gray-300">
+                <strong>Type:</strong> {court.type}
+              </p>
+              <p className="text-sm text-gray-300">
+                <strong>Price:</strong> ${court.pricePerSession} / session
+              </p>
+
+              {/* Slots */}
+              <label className="text-sm font-medium mt-2">Available Slots:</label>
+              <select className="select select-bordered w-full mt-1">
+                {court.slots.map((slot, index) => (
+                  <option key={index}>{slot}</option>
+                ))}
+              </select>
+
+              {/* Button stays at bottom */}
+              <div className="mt-auto pt-4">
+                <button
+                  className="btn btn-primary w-full"
+                  onClick={() => {
+                    if (!user) {
+                      navigate("/login");
+                    } else {
+                      setSelectedCourt(court);
+                    }
+                  }}
+                >
+                  Book Now
+                </button>
               </div>
-              <button
-                className="btn btn-primary mt-3"
-                onClick={() => {
-                  if (!user) {
-                    navigate("/login");
-                  } else {
-                    setSelectedCourt(court);
-                  }
-                }}
-              >
-                Book Now
-              </button>
             </div>
           </div>
         ))}

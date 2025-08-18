@@ -1,8 +1,10 @@
+
+
 import { FaMapMarkerAlt, FaBus, FaParking } from "react-icons/fa";
 
 const LocationMap = () => {
   return (
-    <section className="bg-gray-200 py-6 md:py-10 px-4 md:px-8 lg:px-20">
+    <section className="bg-gray-200 py-6 md:py-10 ">
       <div className="max-w-7xl mx-auto text-center mb-12">
         <h2 className="text-4xl font-bold text-secondary mb-4">Visit Our Location</h2>
         <p className="text-gray-600">
@@ -11,7 +13,7 @@ const LocationMap = () => {
       </div>
 
       {/* Grid Layout */}
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+      <div className="max-w-7xl py-6 md:py-10 px-4 md:px-8 lg:px-20 mx-auto grid md:grid-cols-2 gap-10 items-center">
         
         {/* Left - Directions */}
         <div className="bg-white shadow-lg rounded-2xl p-6 text-left">
