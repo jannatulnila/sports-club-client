@@ -5,7 +5,7 @@ const AdminProfile = () => {
   const { user } = useAuth();
 
   return (
-    <div className="max-w-4xl mx-auto px-4 md:px-8 py-10">
+    <div className="max-w-4xl mx-auto py-6 md:py-10 px-4 md:px-8 lg:px-20">
       {/* Header */}
       <h1 className="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-200">
         Admin Profile

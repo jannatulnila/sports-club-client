@@ -359,7 +359,7 @@ const PromoCoupons = () => {
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-20">
         <div className="text-center mb-2">
           <h2 className="text-xl md:text-3xl font-bold text-[var(--color-secondary)] mb-2">
-            🎉 Exclusive Promo Codes
+             Exclusive Promo Codes
           </h2>
           <p className="text-xl mb-4 text-gray-600">
             Save big on your next booking with these amazing deals!

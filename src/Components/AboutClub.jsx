@@ -300,7 +300,7 @@ import aboutimg4 from "../assets/aboutimg4.jpg"
 import { LocationEdit } from 'lucide-react';
 
 const AboutClub = () => (
-  <section className="bg-gray-200 py-16 px-4 md:px-8 lg:px-20">
+  <section className="bg-gray-200 py-6 md:py-10 px-4 md:px-8 lg:px-20">
     <h2 className="text-3xl text-secondary text-center font-bold mb-8">About Our Club</h2>
     <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
       {/* Left Content */}

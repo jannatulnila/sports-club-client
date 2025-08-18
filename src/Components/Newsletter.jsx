@@ -1,6 +1,6 @@
 const Newsletter = () => {
   return (
-    <section className=" bg-gray-900 py-16 text-center text-white">
+    <section className=" bg-gray-900 py-6 md:py-10 px-4 md:px-8 lg:px-20 text-center text-white">
       <div className="max-w-3xl mx-auto px-6">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">Stay Connected</h2>
         <p className="text-lg mb-8 text-gray-300">
