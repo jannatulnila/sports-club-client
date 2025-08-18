@@ -8,6 +8,7 @@ import Testimonials from '../Components/Testimonials';
 import Achievements from '../Components/Achievements';
 import Newsletter from '../Components/Newsletter';
 import Announcements from '../Components/Announcements';
+import Courts from './Courts/Courts';
 
 
 const Home = () => {
@@ -15,6 +16,7 @@ const Home = () => {
         <div className='bg-white '>
             <Banner></Banner>
             <Announcements></Announcements>
+            <Courts></Courts>
             <Testimonials></Testimonials>
             <Achievements></Achievements>
             <AboutClub></AboutClub>
