@@ -17,6 +17,8 @@ const MyProfile = () => {
         },
     });
 
+    console.log(userInfo);
+    console.log(user)
     if (isLoading) {
         return <p className="text-center mt-10">Loading profile...</p>;
     }
@@ -26,7 +28,7 @@ const MyProfile = () => {
             <h2 className="text-2xl font-bold mb-6 text-center text-secondary">My Profile</h2>
             <div className="flex flex-col items-center space-y-4">
                 <img
-                    src={userInfo.photoURL || user?.photoURL}
+                    src={userInfo.photoURL || user?.photoURL ||" N/A" }
                     alt="Profile"
                     className="w-24 h-24 rounded-full border-2 border-primary"
                 />
